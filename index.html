@@ -3,8 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Groen&GewoonDoen</title>
       <style>
+            * {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===== PAGE CONTAINER ===== */
+body > div {
+  width: 420px;
+  margin: 0 auto 20px auto;
+}
+
+/* ===== HEADER ===== */
+.Header {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header h1 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.Header label {
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+.Header select {
+  padding: 4px;
+  border: 1px solid var(--border-dark);
+  background: white;
+}
+
+/* ===== WELCOME ===== */
+.Welkom {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  text-align: center;
+  padding: 18px;
+}
+
+.Welkom h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.Welkom h2 {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: normal;
+}
+
+/* ===== SECTIONS ===== */
+.Standaard,
+.Custom,
+.Mijn {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 12px;
+}
+
+/* Section titles */
+.Standaard h1,
+.Custom h1,
+.Mijn h1 {
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
+
+/* ===== STANDAARD PAKKETTEN ===== */
+.Standaard select {
+  width: 70%;
+  padding: 6px;
+  border: 1px solid var(--border-dark);
+}
+
+.Standaard button {
+  padding: 6px 12px;
+  margin-left: 8px;
+  background: var(--btn);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.Standaard button:hover {
+  background: var(--btn-hover);
+}
+
+/* ===== CUSTOM OFFERTE ===== */
+.Custom label {
+  display: block;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.Custom input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid var(--border-dark);
+  margin-top: 2px;
+}
+
+.Custom .options {
+  margin-top: 8px;
+}
+
+.Custom button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  background: var(--btn);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== MIJN ORDERS ===== */
+.Mijn table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.Mijn th,
+.Mijn td {
+  border: 1px solid var(--border);
+  padding: 6px;
+  text-align: left;
+}
+
+.Mijn th {
+  background: var(--tab);
+}
+
+/* ===== FOOTER ===== */
+.Footer {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.Footer h1 {
+  display: inline;
+  font-size: 12px;
+  margin: 0 6px;
+  font-weight: normal;
+}
+
       :root {
         --bg: #e9edf2;
         --panel: #f5f6f8;
@@ -42,15 +204,52 @@
     <div class="Standaard pakketten">
         
         <h1>Standaard Pakketten</h1>
+        <select name="Pakket" id="Pakket">
+            <option value="1">Kies een pakket</option>
+        </select>
+        <button>Bestel</button>
 
     </div>
 
     <div class="Custom office">
         <h1>Custom office</h1>
+        <h1>M² Gras</h1>
+        <input type="text">
+        <h1>M² Tegels</h1>
+        <input type="text" name="" id="">
+        <h1>Meters heg</h1>
+        <input type="text" name="" id="">
+        <button>bereken offerte</button>
+
     </div>
 
     <div class="Mijn Orders">
         <h1>Mijn Orders</h1>
+        <button>Bestel</button>
+
+        <table>
+            <th>Order ID</th>
+            <th>Pakket / Info</th>
+            <th>Offerte</th>
+            <th>Status</th>
+            <th>Datum</th>
+        </table>
+
+        <table>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </table>
+        
+        <table>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </table>
     </div>
 
     <div class="Footer">
