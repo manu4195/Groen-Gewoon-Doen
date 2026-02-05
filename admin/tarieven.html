@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Beheerpaneel – Tarieven</title>
+
+    <style>
+      :root {
+        --bg: #e9edf2;
+        --panel: #f5f6f8;
+        --card: #ffffff;
+        --border: #cfd6de;
+        --border-dark: #b8c1cb;
+        --text: #2f3a45;
+        --muted: #6d7b88;
+        --bar: #8b949e;
+        --tab: #dfe4ea;
+        --tab-active: #ffffff;
+        --btn: #6f7881;
+        --btn-hover: #5f6770;
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "var(--bg)",
+              panel: "var(--panel)",
+              card: "var(--card)",
+              border: "var(--border)",
+              "border-dark": "var(--border-dark)",
+              text: "var(--text)",
+              muted: "var(--muted)",
+              bar: "var(--bar)",
+              tab: "var(--tab)",
+              "tab-active": "var(--tab-active)",
+              btn: "var(--btn)",
+              "btn-hover": "var(--btn-hover)",
+            },
+            boxShadow: {
+              panel: "var(--shadow)",
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+
+  <body class="min-h-screen bg-bg text-text">
+    <header class="py-5">
+      <h1 class="text-center text-2xl font-bold">Beheerpaneel (Admin)</h1>
+      <p class="mt-1 text-center text-xs text-muted">
+        Orders beheren • Pakketten beheren • Tarieven instellen
+      </p>
+    </header>
+
+    <main
+      class="mx-auto mb-6 w-[min(980px,calc(100%-24px))] overflow-hidden rounded-md border-2 border-border-dark bg-panel shadow-panel"
+    >
+      <div class="flex items-center justify-between bg-gradient-to-b from-bar to-[#7f8892] px-3 py-2 text-white">
+        <div class="flex items-center gap-3">
+          <div class="grid h-7 w-9 place-items-center rounded border border-white/35 bg-white/10" aria-hidden="true">
+            <div class="relative h-3 w-4">
+              <span class="absolute left-0 right-0 top-0 h-0.5 rounded bg-white"></span>
+              <span class="absolute left-0 right-0 top-1.5 h-0.5 rounded bg-white"></span>
+              <span class="absolute left-0 right-0 top-3 h-0.5 rounded bg-white"></span>
+            </div>
+          </div>
+
+          <div class="leading-tight">
+            <div class="text-sm font-bold tracking-wide">Admin – Groen &amp; Gewoon Doen</div>
+            <div class="text-[11px] text-white/80">Ingelogd als: <span class="font-semibold text-white">beheerder</span></div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="hidden rounded bg-white/10 px-2 py-1 text-[11px] text-white/90 md:inline">Laatste update: zojuist</span>
+          <button type="button" class="rounded border border-white/35 bg-white/10 px-3 py-1.5 text-xs hover:bg-white/20">Uitloggen</button>
+        </div>
+      </div>
+
+      <nav class="flex flex-wrap gap-1.5 bg-panel px-3 pt-2">
+        <a href="./index.html" class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95">Dashboard</a>
+        <a href="./orders.html" class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95">Orders</a>
+        <a href="./pakketten.html" class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95">Pakketten</a>
+        <a href="./tarieven.html" class="rounded-t border border-border border-b-0 bg-tab-active px-3 py-2 text-xs font-bold text-text">Tarieven</a>
+        <a href="./instellingen.html" class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95">Instellingen</a>
+      </nav>
+
+      <section class="border-t border-border bg-tab-active p-3">
+        <section class="rounded border border-border bg-card p-3">
+          <div class="mb-2">
+            <h2 class="text-sm font-bold">Tarieven &amp; rekenregels</h2>
+            <p class="mt-0.5 text-[11px] text-muted">
+              Stel basisprijzen in die gebruikt worden bij het berekenen van offertes.
+            </p>
+          </div>
+
+          <div class="grid gap-3 md:grid-cols-3">
+            <div class="rounded border border-border bg-card p-3">
+              <div class="text-[11px] text-muted">Prijs per m² gras</div>
+              <div class="mt-1 text-lg font-bold">€ 18,50</div>
+              <div class="mt-1 text-[11px] text-muted">Standaard tarief</div>
+            </div>
+            <div class="rounded border border-border bg-card p-3">
+              <div class="text-[11px] text-muted">Prijs per m² tegels</div>
+              <div class="mt-1 text-lg font-bold">€ 25,00</div>
+              <div class="mt-1 text-[11px] text-muted">Incl. afvoer</div>
+            </div>
+            <div class="rounded border border-border bg-card p-3">
+              <div class="text-[11px] text-muted">Voorrijkosten</div>
+              <div class="mt-1 text-lg font-bold">€ 35,00</div>
+              <div class="mt-1 text-[11px] text-muted">Binnen 20km</div>
+            </div>
+          </div>
+
+          <div class="mt-3 rounded border border-border bg-card p-3">
+            <h3 class="text-xs font-bold">Tarieven aanpassen</h3>
+
+            <div class="mt-3 grid gap-3 md:grid-cols-3 md:items-end">
+              <div class="grid gap-1.5">
+                <label class="text-xs text-text" for="rate_gras">Prijs per m² gras</label>
+                <input
+                  id="rate_gras"
+                  type="number"
+                  step="0.01"
+                  placeholder="18.50"
+                  class="h-8 rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark focus:ring-2 focus:ring-[color:var(--btn)]/20"
+                />
+              </div>
+
+              <div class="grid gap-1.5">
+                <label class="text-xs text-text" for="rate_tegels">Prijs per m² tegels</label>
+                <input
+                  id="rate_tegels"
+                  type="number"
+                  step="0.01"
+                  placeholder="25.00"
+                  class="h-8 rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark focus:ring-2 focus:ring-[color:var(--btn)]/20"
+                />
+              </div>
+
+              <div class="grid gap-1.5">
+                <label class="text-xs text-text" for="rate_voorrijkosten">Voorrijkosten</label>
+                <input
+                  id="rate_voorrijkosten"
+                  type="number"
+                  step="0.01"
+                  placeholder="35.00"
+                  class="h-8 rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark focus:ring-2 focus:ring-[color:var(--btn)]/20"
+                />
+              </div>
+
+              <div class="grid gap-1.5 md:col-span-2">
+                <label class="text-xs text-text" for="rate_notes">Notities (optioneel)</label>
+                <input
+                  id="rate_notes"
+                  type="text"
+                  placeholder="Bijv. weekend toeslag +15%"
+                  class="h-8 rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark focus:ring-2 focus:ring-[color:var(--btn)]/20"
+                />
+              </div>
+
+              <div class="flex justify-end gap-2">
+                <button type="button" class="h-8 rounded border border-black/15 bg-tab px-3 text-xs text-text hover:brightness-95">
+                  Terugzetten
+                </button>
+                <button type="button" class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover">
+                  Opslaan
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="border-t border-border bg-panel py-3 text-center text-xs text-muted">
+        © Groen &amp; Gewoon Doen – Adminpaneel
+      </footer>
+    </main>
+  </body>
+</html>
