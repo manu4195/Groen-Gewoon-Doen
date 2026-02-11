@@ -51,7 +51,8 @@
     </script>
   </head>
 
-  <body class="min-h-screen bg-bg text-text">
+  <!-- data-page zorgt dat main.js weet welke pagina dit is -->
+  <body class="min-h-screen bg-bg text-text" data-page="dashboard">
     <!-- Header -->
     <header class="py-5">
       <h1 class="text-center text-2xl font-bold">Beheerpaneel (Admin)</h1>
@@ -93,8 +94,10 @@
         </div>
 
         <div class="flex items-center gap-2">
-          <span class="hidden rounded bg-white/10 px-2 py-1 text-[11px] text-white/90 md:inline">
-            Laatste update: zojuist
+          <span
+            class="hidden rounded bg-white/10 px-2 py-1 text-[11px] text-white/90 md:inline"
+          >
+            Laatste update: <span id="last-update">—</span>
           </span>
           <button
             type="button"
@@ -146,29 +149,31 @@
           <div class="grid gap-2 md:grid-cols-4">
             <div class="rounded border border-border bg-card p-3">
               <div class="text-[11px] text-muted">Openstaande orders</div>
-              <div class="mt-1 text-xl font-bold">12</div>
+              <div class="mt-1 text-xl font-bold" id="stat-open">0</div>
               <div class="mt-1 text-[11px] text-muted">Wachten op planning</div>
             </div>
             <div class="rounded border border-border bg-card p-3">
               <div class="text-[11px] text-muted">Ingepland</div>
-              <div class="mt-1 text-xl font-bold">5</div>
+              <div class="mt-1 text-xl font-bold" id="stat-ingepland">0</div>
               <div class="mt-1 text-[11px] text-muted">Deze week</div>
             </div>
             <div class="rounded border border-border bg-card p-3">
               <div class="text-[11px] text-muted">Afgerond</div>
-              <div class="mt-1 text-xl font-bold">38</div>
+              <div class="mt-1 text-xl font-bold" id="stat-afgerond">0</div>
               <div class="mt-1 text-[11px] text-muted">Laatste 30 dagen</div>
             </div>
             <div class="rounded border border-border bg-card p-3">
               <div class="text-[11px] text-muted">Offertes verzonden</div>
-              <div class="mt-1 text-xl font-bold">9</div>
+              <div class="mt-1 text-xl font-bold" id="stat-offertes">0</div>
               <div class="mt-1 text-[11px] text-muted">Wachten op akkoord</div>
             </div>
           </div>
         </section>
 
         <section class="rounded border border-border bg-card p-3">
-          <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <div
+            class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
+          >
             <div>
               <h2 class="text-sm font-bold">Overzicht</h2>
               <p class="mt-0.5 text-[11px] text-muted">
@@ -180,6 +185,7 @@
               <button
                 type="button"
                 class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover"
+                id="btn-refresh"
               >
                 Vernieuwen
               </button>
@@ -196,26 +202,45 @@
             <div class="rounded border border-border bg-panel p-3">
               <div class="text-[11px] text-muted">Te doen</div>
               <div class="mt-1 text-sm font-bold">3 offertes maken</div>
-              <div class="mt-1 text-[11px] text-muted">ORD-1042, ORD-1039, ORD-1036</div>
+              <div class="mt-1 text-[11px] text-muted">
+                ORD-1042, ORD-1039, ORD-1036
+              </div>
             </div>
             <div class="rounded border border-border bg-panel p-3">
               <div class="text-[11px] text-muted">Planning</div>
               <div class="mt-1 text-sm font-bold">2 afspraken bevestigen</div>
-              <div class="mt-1 text-[11px] text-muted">Vrijdagmiddag, Zaterdagochtend</div>
+              <div class="mt-1 text-[11px] text-muted">
+                Vrijdagmiddag, Zaterdagochtend
+              </div>
             </div>
             <div class="rounded border border-border bg-panel p-3">
               <div class="text-[11px] text-muted">Facturatie</div>
               <div class="mt-1 text-sm font-bold">1 factuur versturen</div>
-              <div class="mt-1 text-[11px] text-muted">Na afronding (ORD-1041)</div>
+              <div class="mt-1 text-[11px] text-muted">
+                Na afronding (ORD-1041)
+              </div>
             </div>
           </div>
         </section>
       </section>
 
       <!-- Footer -->
-      <footer class="border-t border-border bg-panel py-3 text-center text-xs text-muted">
+      <footer
+        class="border-t border-border bg-panel py-3 text-center text-xs text-muted"
+      >
         © Groen &amp; Gewoon Doen – Adminpaneel
       </footer>
     </main>
+
+    <!-- Script: laadt dashboard stats via /api/orders (met localStorage fallback) -->
+    <script type="module" src="../js/main.js"></script>
+
+    <!-- Kleine extra: refresh knop triggert herladen -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("btn-refresh")
+        if (btn) btn.addEventListener("click", () => window.location.reload())
+      })
+    </script>
   </body>
 </html>

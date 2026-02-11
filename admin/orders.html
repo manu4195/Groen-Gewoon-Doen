@@ -51,7 +51,8 @@
     </script>
   </head>
 
-  <body class="min-h-screen bg-bg text-text">
+  <!-- data-page helpt main.js weten welke pagina dit is -->
+  <body class="min-h-screen bg-bg text-text" data-page="orders">
     <header class="py-5">
       <h1 class="text-center text-2xl font-bold">Beheerpaneel (Admin)</h1>
       <p class="mt-1 text-center text-xs text-muted">
@@ -66,7 +67,10 @@
         class="flex items-center justify-between bg-gradient-to-b from-bar to-[#7f8892] px-3 py-2 text-white"
       >
         <div class="flex items-center gap-3">
-          <div class="grid h-7 w-9 place-items-center rounded border border-white/35 bg-white/10" aria-hidden="true">
+          <div
+            class="grid h-7 w-9 place-items-center rounded border border-white/35 bg-white/10"
+            aria-hidden="true"
+          >
             <div class="relative h-3 w-4">
               <span class="absolute left-0 right-0 top-0 h-0.5 rounded bg-white"></span>
               <span class="absolute left-0 right-0 top-1.5 h-0.5 rounded bg-white"></span>
@@ -75,51 +79,95 @@
           </div>
 
           <div class="leading-tight">
-            <div class="text-sm font-bold tracking-wide">Admin – Groen &amp; Gewoon Doen</div>
-            <div class="text-[11px] text-white/80">Ingelogd als: <span class="font-semibold text-white">beheerder</span></div>
+            <div class="text-sm font-bold tracking-wide">
+              Admin – Groen &amp; Gewoon Doen
+            </div>
+            <div class="text-[11px] text-white/80">
+              Ingelogd als:
+              <span class="font-semibold text-white">beheerder</span>
+            </div>
           </div>
         </div>
 
         <div class="flex items-center gap-2">
-          <span class="hidden rounded bg-white/10 px-2 py-1 text-[11px] text-white/90 md:inline">
-            Laatste update: zojuist
+          <span
+            class="hidden rounded bg-white/10 px-2 py-1 text-[11px] text-white/90 md:inline"
+          >
+            Laatste update: <span id="last-update">—</span>
           </span>
-          <button type="button" class="rounded border border-white/35 bg-white/10 px-3 py-1.5 text-xs hover:bg-white/20">
+          <button
+            type="button"
+            class="rounded border border-white/35 bg-white/10 px-3 py-1.5 text-xs hover:bg-white/20"
+          >
             Uitloggen
           </button>
         </div>
       </div>
 
       <nav class="flex flex-wrap gap-1.5 bg-panel px-3 pt-2">
-        <a href="./index.html" class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95">Dashboard</a>
-        <a href="./orders.html" class="rounded-t border border-border border-b-0 bg-tab-active px-3 py-2 text-xs font-bold text-text">Orders</a>
-        <a href="./pakketten.html" class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95">Pakketten</a>
-        <a href="./tarieven.html" class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95">Tarieven</a>
-        <a href="./instellingen.html" class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95">Instellingen</a>
+        <a
+          href="./index.html"
+          class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95"
+          >Dashboard</a
+        >
+        <a
+          href="./orders.html"
+          class="rounded-t border border-border border-b-0 bg-tab-active px-3 py-2 text-xs font-bold text-text"
+          >Orders</a
+        >
+        <a
+          href="./pakketten.html"
+          class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95"
+          >Pakketten</a
+        >
+        <a
+          href="./tarieven.html"
+          class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95"
+          >Tarieven</a
+        >
+        <a
+          href="./instellingen.html"
+          class="rounded-t border border-border border-b-0 bg-tab px-3 py-2 text-xs text-text hover:brightness-95"
+          >Instellingen</a
+        >
       </nav>
 
       <section class="border-t border-border bg-tab-active p-3">
         <section class="rounded border border-border bg-card p-3">
-          <div class="mb-2 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <div
+            class="mb-2 flex flex-col gap-2 md:flex-row md:items-center md:justify-between"
+          >
             <h2 class="text-sm font-bold">Orderbeheer</h2>
 
             <div class="flex flex-wrap items-center gap-2">
               <input
+                id="q"
                 type="text"
                 placeholder="Zoek (order-id, klant, postcode…) "
                 class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark focus:ring-2 focus:ring-[color:var(--btn)]/20 md:w-72"
               />
               <select
+                id="status"
                 class="h-8 rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark focus:ring-2 focus:ring-[color:var(--btn)]/20"
               >
-                <option>Alle statussen</option>
-                <option>Nieuw</option>
-                <option>Offerte verstuurd</option>
-                <option>Ingepland</option>
-                <option>Afgerond</option>
-                <option>Afgewezen</option>
+                <option value="">Alle statussen</option>
+                <option value="nieuw">Nieuw</option>
+                <option value="offerte verstuurd">Offerte verstuurd</option>
+                <option value="ingepland">Ingepland</option>
+                <option value="afgerond">Afgerond</option>
+                <option value="afgewezen">Afgewezen</option>
               </select>
+
               <button
+                id="btn-new"
+                type="button"
+                class="h-8 rounded border border-black/15 bg-tab px-3 text-xs text-text hover:brightness-95"
+              >
+                + Nieuwe order
+              </button>
+
+              <button
+                id="btn-refresh"
                 type="button"
                 class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover"
               >
@@ -128,131 +176,442 @@
             </div>
           </div>
 
+          <!-- Table -->
           <div class="overflow-x-auto">
             <table class="w-full min-w-[920px] border-collapse text-xs">
               <thead>
                 <tr class="bg-panel text-text">
-                  <th class="border border-border px-2 py-2 text-left w-28">Order-ID</th>
-                  <th class="border border-border px-2 py-2 text-left w-52">Klant</th>
-                  <th class="border border-border px-2 py-2 text-left">Werk / Details</th>
-                  <th class="border border-border px-2 py-2 text-left w-40">Offerte</th>
-                  <th class="border border-border px-2 py-2 text-left w-28">Status</th>
-                  <th class="border border-border px-2 py-2 text-right w-56">Acties</th>
+                  <th class="border border-border px-2 py-2 text-left w-28">
+                    Order-ID
+                  </th>
+                  <th class="border border-border px-2 py-2 text-left w-52">
+                    Klant
+                  </th>
+                  <th class="border border-border px-2 py-2 text-left">
+                    Werk / Details
+                  </th>
+                  <th class="border border-border px-2 py-2 text-left w-40">
+                    Offerte
+                  </th>
+                  <th class="border border-border px-2 py-2 text-left w-28">
+                    Status
+                  </th>
+                  <th class="border border-border px-2 py-2 text-right w-56">
+                    Acties
+                  </th>
                 </tr>
               </thead>
 
-              <tbody>
-                <tr class="hover:bg-bg/40">
-                  <td class="border border-border px-2 py-2 font-semibold">ORD-1042</td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="font-semibold">J. de Vries</div>
-                    <div class="text-[11px] text-muted">1012 AB • Amsterdam</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="font-semibold">Tuinonderhoud + snoeiwerk</div>
-                    <div class="text-[11px] text-muted">Opmerking: graag op vrijdagmiddag</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="text-[11px] text-muted">Offerte #OF-220</div>
-                    <div class="font-semibold">€ 245,00</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <span class="rounded border border-border bg-panel px-2 py-1 text-[11px] font-semibold text-text">
-                      Nieuw
-                    </span>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="flex flex-wrap justify-end gap-1.5">
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Offerte maken
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Inplannen
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Afwijzen
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr class="hover:bg-bg/40">
-                  <td class="border border-border px-2 py-2 font-semibold">ORD-1041</td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="font-semibold">S. Bakker</div>
-                    <div class="text-[11px] text-muted">3521 CD • Utrecht</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="font-semibold">Tegels verwijderen (20m²)</div>
-                    <div class="text-[11px] text-muted">Inclusief afvoer</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="text-[11px] text-muted">Offerte #OF-219</div>
-                    <div class="font-semibold">€ 520,00</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <span class="rounded border border-border bg-panel px-2 py-1 text-[11px] font-semibold text-text">
-                      Ingepland
-                    </span>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="flex flex-wrap justify-end gap-1.5">
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Planning wijzigen
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Afronden
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Factuur
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr class="hover:bg-bg/40">
-                  <td class="border border-border px-2 py-2 font-semibold">ORD-1040</td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="font-semibold">M. Jansen</div>
-                    <div class="text-[11px] text-muted">5611 AA • Eindhoven</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="font-semibold">Gras leggen (35m²)</div>
-                    <div class="text-[11px] text-muted">Start: volgende week</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="text-[11px] text-muted">Offerte #OF-218</div>
-                    <div class="font-semibold">€ 1.050,00</div>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <span class="rounded border border-border bg-panel px-2 py-1 text-[11px] font-semibold text-text">
-                      Afgerond
-                    </span>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="flex flex-wrap justify-end gap-1.5">
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Bekijken
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Offerte opnieuw
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+              <tbody id="orders-tbody">
+                <!-- gevuld door JS -->
               </tbody>
             </table>
           </div>
 
-          <div class="mt-2 text-[11px] text-muted">
-            Tip: koppel acties aan je backend (bijv. “Inplannen” → status = gepland + datum).
+          <div class="mt-2 text-[11px] text-muted" id="hint">
+            Data komt uit <code>/api/orders</code> (met localStorage fallback).
           </div>
         </section>
       </section>
 
-      <footer class="border-t border-border bg-panel py-3 text-center text-xs text-muted">
+      <footer
+        class="border-t border-border bg-panel py-3 text-center text-xs text-muted"
+      >
         © Groen &amp; Gewoon Doen – Adminpaneel
       </footer>
     </main>
+
+    <!-- ===== Modal (Create/Edit) ===== -->
+    <div
+      id="modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 p-3"
+      aria-hidden="true"
+    >
+      <div
+        class="w-full max-w-[720px] rounded-md border border-border bg-card shadow-panel"
+      >
+        <div class="flex items-center justify-between border-b border-border p-3">
+          <div>
+            <div class="text-sm font-bold" id="modal-title">Nieuwe order</div>
+            <div class="text-[11px] text-muted">
+              Opslaan via NodeJS → JSON file (en cache in localStorage)
+            </div>
+          </div>
+          <button
+            type="button"
+            class="rounded border border-border bg-panel px-2 py-1 text-xs hover:brightness-95"
+            id="modal-close"
+          >
+            Sluiten
+          </button>
+        </div>
+
+        <form id="form" class="p-3">
+          <input type="hidden" id="order-id" value="" />
+
+          <div class="grid gap-2 md:grid-cols-2">
+            <label class="text-xs">
+              <div class="mb-1 text-[11px] text-muted">Order nummer (bv. ORD-1042)</div>
+              <input
+                id="nummer"
+                class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark"
+                placeholder="ORD-...."
+              />
+            </label>
+
+            <label class="text-xs">
+              <div class="mb-1 text-[11px] text-muted">Status</div>
+              <select
+                id="status-edit"
+                class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark"
+              >
+                <option value="nieuw">Nieuw</option>
+                <option value="offerte verstuurd">Offerte verstuurd</option>
+                <option value="ingepland">Ingepland</option>
+                <option value="afgerond">Afgerond</option>
+                <option value="afgewezen">Afgewezen</option>
+              </select>
+            </label>
+
+            <label class="text-xs">
+              <div class="mb-1 text-[11px] text-muted">Klant naam</div>
+              <input
+                id="klantNaam"
+                class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark"
+                placeholder="J. de Vries"
+              />
+            </label>
+
+            <label class="text-xs">
+              <div class="mb-1 text-[11px] text-muted">Postcode + Plaats</div>
+              <input
+                id="locatie"
+                class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark"
+                placeholder="1012 AB • Amsterdam"
+              />
+            </label>
+
+            <label class="text-xs md:col-span-2">
+              <div class="mb-1 text-[11px] text-muted">Werk / details</div>
+              <input
+                id="werk"
+                class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark"
+                placeholder="Tuinonderhoud + snoeiwerk"
+              />
+            </label>
+
+            <label class="text-xs md:col-span-2">
+              <div class="mb-1 text-[11px] text-muted">Opmerking</div>
+              <input
+                id="opmerking"
+                class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark"
+                placeholder="Graag op vrijdagmiddag…"
+              />
+            </label>
+
+            <label class="text-xs">
+              <div class="mb-1 text-[11px] text-muted">Offerte nummer</div>
+              <input
+                id="offerteNr"
+                class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark"
+                placeholder="OF-220"
+              />
+            </label>
+
+            <label class="text-xs">
+              <div class="mb-1 text-[11px] text-muted">Offerte bedrag (€)</div>
+              <input
+                id="offerteBedrag"
+                type="number"
+                step="0.01"
+                class="h-8 w-full rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark"
+                placeholder="245.00"
+              />
+            </label>
+          </div>
+
+          <div class="mt-3 flex flex-wrap justify-end gap-2">
+            <button
+              type="button"
+              id="btn-cancel"
+              class="h-8 rounded border border-border bg-panel px-3 text-xs hover:brightness-95"
+            >
+              Annuleren
+            </button>
+            <button
+              type="submit"
+              class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover"
+            >
+              Opslaan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===== Script (werkt met jouw functions.js + Node API) ===== -->
+    <script type="module">
+      import { apiList, apiCreate, apiUpdate, apiDelete } from "../js/functions.js"
+
+      const els = {
+        tbody: document.getElementById("orders-tbody"),
+        q: document.getElementById("q"),
+        status: document.getElementById("status"),
+        btnRefresh: document.getElementById("btn-refresh"),
+        btnNew: document.getElementById("btn-new"),
+        lastUpdate: document.getElementById("last-update"),
+        hint: document.getElementById("hint"),
+
+        modal: document.getElementById("modal"),
+        modalTitle: document.getElementById("modal-title"),
+        modalClose: document.getElementById("modal-close"),
+        btnCancel: document.getElementById("btn-cancel"),
+        form: document.getElementById("form"),
+
+        id: document.getElementById("order-id"),
+        nummer: document.getElementById("nummer"),
+        statusEdit: document.getElementById("status-edit"),
+        klantNaam: document.getElementById("klantNaam"),
+        locatie: document.getElementById("locatie"),
+        werk: document.getElementById("werk"),
+        opmerking: document.getElementById("opmerking"),
+        offerteNr: document.getElementById("offerteNr"),
+        offerteBedrag: document.getElementById("offerteBedrag"),
+      }
+
+      let allOrders = []
+
+      function euro(n) {
+        const v = Number(n || 0)
+        return "€ " + v.toFixed(2).replace(".", ",")
+      }
+
+      function badge(status) {
+        const s = String(status || "nieuw").trim()
+        return `
+          <span class="rounded border border-border bg-panel px-2 py-1 text-[11px] font-semibold text-text">
+            ${escapeHtml(titleCase(s))}
+          </span>
+        `
+      }
+
+      function titleCase(s) {
+        // laat "offerte verstuurd" netjes
+        return s.length ? s[0].toUpperCase() + s.slice(1) : s
+      }
+
+      function escapeHtml(str) {
+        return String(str ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;")
+      }
+
+      function normalizeForSearch(o) {
+        const parts = [
+          o.nummer,
+          o.id,
+          o.klant?.naam,
+          o.klantNaam,
+          o.klant?.locatie,
+          o.locatie,
+          o.werk?.titel,
+          o.werkTitel,
+          o.werk,
+          o.opmerking,
+          o.status,
+        ]
+        return parts.filter(Boolean).join(" ").toLowerCase()
+      }
+
+      function applyFilters() {
+        const q = (els.q.value || "").trim().toLowerCase()
+        const status = (els.status.value || "").trim().toLowerCase()
+
+        return allOrders.filter((o) => {
+          const okQ = !q || normalizeForSearch(o).includes(q)
+          const oStatus = String(o.status || "").toLowerCase()
+          const okS = !status || oStatus === status
+          return okQ && okS
+        })
+      }
+
+      function render() {
+        const rows = applyFilters().map(renderRow).join("")
+        els.tbody.innerHTML =
+          rows ||
+          `<tr><td class="border border-border px-2 py-3 text-center text-muted" colspan="6">
+              Geen orders gevonden.
+            </td></tr>`
+      }
+
+      function renderRow(o) {
+        const nummer = o.nummer || o.order_id || o.orderId || o.id || "-"
+        const klantNaam = o.klantNaam || o.klant?.naam || "-"
+        const locatie = o.locatie || o.klant?.locatie || ""
+        const werkTitel = o.werk || o.werkTitel || o.werk?.titel || "-"
+        const opmerking = o.opmerking || o.werk?.opmerking || ""
+        const offerteNr = o.offerteNr || o.offerte?.nr || ""
+        const offerteBedrag = o.offerteBedrag ?? o.offerte?.bedrag ?? o.prijs ?? 0
+        const status = o.status || "nieuw"
+
+        return `
+          <tr class="hover:bg-bg/40" data-id="${escapeHtml(o.id)}">
+            <td class="border border-border px-2 py-2 font-semibold">${escapeHtml(nummer)}</td>
+            <td class="border border-border px-2 py-2">
+              <div class="font-semibold">${escapeHtml(klantNaam)}</div>
+              <div class="text-[11px] text-muted">${escapeHtml(locatie)}</div>
+            </td>
+            <td class="border border-border px-2 py-2">
+              <div class="font-semibold">${escapeHtml(werkTitel)}</div>
+              <div class="text-[11px] text-muted">${escapeHtml(opmerking)}</div>
+            </td>
+            <td class="border border-border px-2 py-2">
+              <div class="text-[11px] text-muted">${offerteNr ? "Offerte #"+escapeHtml(offerteNr) : ""}</div>
+              <div class="font-semibold">${euro(offerteBedrag)}</div>
+            </td>
+            <td class="border border-border px-2 py-2">${badge(status)}</td>
+            <td class="border border-border px-2 py-2">
+              <div class="flex flex-wrap justify-end gap-1.5">
+                <button class="rounded border border-black/15 bg-tab px-2.5 py-1.5 text-xs hover:brightness-95" data-act="edit" type="button">Bewerken</button>
+                <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" data-act="status" data-status="ingepland" type="button">Inplannen</button>
+                <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" data-act="status" data-status="afgerond" type="button">Afronden</button>
+                <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" data-act="status" data-status="afgewezen" type="button">Afwijzen</button>
+                <button class="rounded border border-black/15 bg-panel px-2.5 py-1.5 text-xs hover:brightness-95" data-act="delete" type="button">Verwijderen</button>
+              </div>
+            </td>
+          </tr>
+        `
+      }
+
+      function openModal(mode, order = null) {
+        els.modal.classList.remove("hidden")
+        els.modal.classList.add("flex")
+        els.modal.setAttribute("aria-hidden", "false")
+
+        if (mode === "new") {
+          els.modalTitle.textContent = "Nieuwe order"
+          els.id.value = ""
+          els.nummer.value = ""
+          els.statusEdit.value = "nieuw"
+          els.klantNaam.value = ""
+          els.locatie.value = ""
+          els.werk.value = ""
+          els.opmerking.value = ""
+          els.offerteNr.value = ""
+          els.offerteBedrag.value = ""
+          return
+        }
+
+        els.modalTitle.textContent = "Order bewerken"
+        els.id.value = order?.id || ""
+        els.nummer.value = order?.nummer || order?.order_id || order?.orderId || ""
+        els.statusEdit.value = (order?.status || "nieuw").toLowerCase()
+        els.klantNaam.value = order?.klantNaam || order?.klant?.naam || ""
+        els.locatie.value = order?.locatie || order?.klant?.locatie || ""
+        els.werk.value = order?.werk || order?.werkTitel || order?.werk?.titel || ""
+        els.opmerking.value = order?.opmerking || order?.werk?.opmerking || ""
+        els.offerteNr.value = order?.offerteNr || order?.offerte?.nr || ""
+        const bedrag = order?.offerteBedrag ?? order?.offerte?.bedrag ?? order?.prijs ?? ""
+        els.offerteBedrag.value = bedrag === 0 ? "" : String(bedrag)
+      }
+
+      function closeModal() {
+        els.modal.classList.add("hidden")
+        els.modal.classList.remove("flex")
+        els.modal.setAttribute("aria-hidden", "true")
+      }
+
+      async function load() {
+        els.hint.textContent = "Laden..."
+        allOrders = await apiList("orders")
+        els.hint.innerHTML =
+          'Data komt uit <code>/api/orders</code> (met localStorage fallback).'
+        els.lastUpdate.textContent = "zojuist"
+        render()
+      }
+
+      // Events
+      els.btnRefresh.addEventListener("click", load)
+      els.btnNew.addEventListener("click", () => openModal("new"))
+      els.modalClose.addEventListener("click", closeModal)
+      els.btnCancel.addEventListener("click", closeModal)
+      els.q.addEventListener("input", render)
+      els.status.addEventListener("change", render)
+
+      // Delegate actions
+      els.tbody.addEventListener("click", async (e) => {
+        const btn = e.target.closest("button[data-act]")
+        if (!btn) return
+
+        const tr = e.target.closest("tr[data-id]")
+        const id = tr?.dataset?.id
+        if (!id) return
+
+        const act = btn.dataset.act
+        const order = allOrders.find((x) => x.id === id)
+
+        try {
+          if (act === "edit") {
+            openModal("edit", order)
+            return
+          }
+
+          if (act === "status") {
+            const nextStatus = btn.dataset.status
+            await apiUpdate("orders", id, { status: nextStatus })
+            await load()
+            return
+          }
+
+          if (act === "delete") {
+            if (!confirm("Order verwijderen?")) return
+            await apiDelete("orders", id)
+            await load()
+            return
+          }
+        } catch (err) {
+          alert(err?.message || "Actie mislukt")
+        }
+      })
+
+      // Save form (create or update)
+      els.form.addEventListener("submit", async (e) => {
+        e.preventDefault()
+
+        const payload = {
+          nummer: els.nummer.value.trim(),
+          status: els.statusEdit.value.trim(),
+          klantNaam: els.klantNaam.value.trim(),
+          locatie: els.locatie.value.trim(),
+          werk: els.werk.value.trim(),
+          opmerking: els.opmerking.value.trim(),
+          offerteNr: els.offerteNr.value.trim(),
+          offerteBedrag: els.offerteBedrag.value
+            ? Number(els.offerteBedrag.value)
+            : 0,
+        }
+
+        // minimale validatie
+        if (!payload.nummer) return alert("Order nummer is verplicht")
+        if (!payload.klantNaam) return alert("Klant naam is verplicht")
+
+        try {
+          const id = els.id.value
+          if (id) await apiUpdate("orders", id, payload)
+          else await apiCreate("orders", payload)
+
+          closeModal()
+          await load()
+        } catch (err) {
+          alert(err?.message || "Opslaan mislukt")
+        }
+      })
+
+      // Init
+      load()
+    </script>
   </body>
 </html>

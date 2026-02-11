@@ -1,10 +1,10 @@
 [
   {
-    "id": "orders_demo_1",
+    "id": "tarieven_demo_1",
     "created_at": "2026-02-11T00:00:00.000Z",
     "updated_at": "2026-02-11T00:00:00.000Z",
-    "nummer": "ORD-1042",
-    "status": "open",
-    "prijs": 129.95
+    "zone": "NL",
+    "prijs_per_km": 0.5,
+    "starttarief": 4.0
   }
 ]
