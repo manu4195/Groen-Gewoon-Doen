@@ -42,9 +42,7 @@
               btn: "var(--btn)",
               "btn-hover": "var(--btn-hover)",
             },
-            boxShadow: {
-              panel: "var(--shadow)",
-            },
+            boxShadow: { panel: "var(--shadow)" },
           },
         },
       }
@@ -79,7 +77,7 @@
         </div>
 
         <div class="flex items-center gap-2">
-          <span class="hidden rounded bg-white/10 px-2 py-1 text-[11px] text-white/90 md:inline">Laatste update: zojuist</span>
+          <span id="lastUpdate" class="hidden rounded bg-white/10 px-2 py-1 text-[11px] text-white/90 md:inline">Laatste update: —</span>
           <button type="button" class="rounded border border-white/35 bg-white/10 px-3 py-1.5 text-xs hover:bg-white/20">Uitloggen</button>
         </div>
       </div>
@@ -102,12 +100,15 @@
               </p>
             </div>
 
-            <div class="flex items-center gap-2">
-              <button class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover" type="button">
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="btnNew" class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover" type="button">
                 Nieuw pakket
               </button>
-              <button class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover" type="button">
+              <button id="btnRefresh" class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover" type="button">
                 Vernieuwen
+              </button>
+              <button id="btnReset" class="h-8 rounded border border-black/15 bg-tab px-3 text-xs text-text hover:brightness-95" type="button" title="Verwijder lokale wijzigingen">
+                Reset lokaal
               </button>
             </div>
           </div>
@@ -123,90 +124,31 @@
                   <th class="border border-border px-2 py-2 text-right w-56">Acties</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="hover:bg-bg/40">
-                  <td class="border border-border px-2 py-2 font-semibold">Basis onderhoud</td>
-                  <td class="border border-border px-2 py-2 font-semibold">€ 149,00</td>
-                  <td class="border border-border px-2 py-2 text-muted">
-                    Snoeien, onkruid verwijderen, korte check (± 2 uur).
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <span class="rounded border border-border bg-panel px-2 py-1 text-[11px] font-semibold">Ja</span>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="flex flex-wrap justify-end gap-1.5">
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Bewerken
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Dupliceren
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Verwijderen
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr class="hover:bg-bg/40">
-                  <td class="border border-border px-2 py-2 font-semibold">Tegel verwijderen + afvoer</td>
-                  <td class="border border-border px-2 py-2 font-semibold">€ 25,00</td>
-                  <td class="border border-border px-2 py-2 text-muted">
-                    Prijs per m², inclusief afvoer (min. 10m²).
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <span class="rounded border border-border bg-panel px-2 py-1 text-[11px] font-semibold">Ja</span>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="flex flex-wrap justify-end gap-1.5">
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Bewerken
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Dupliceren
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Verwijderen
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr class="hover:bg-bg/40">
-                  <td class="border border-border px-2 py-2 font-semibold">Gras leggen</td>
-                  <td class="border border-border px-2 py-2 font-semibold">€ 18,50</td>
-                  <td class="border border-border px-2 py-2 text-muted">
-                    Prijs per m², inclusief egaliseren (excl. materiaal).
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <span class="rounded border border-border bg-panel px-2 py-1 text-[11px] font-semibold">Nee</span>
-                  </td>
-                  <td class="border border-border px-2 py-2">
-                    <div class="flex flex-wrap justify-end gap-1.5">
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Bewerken
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Activeren
-                      </button>
-                      <button class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
-                        Verwijderen
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+              <tbody id="packagesTbody">
+                <!-- dynamisch -->
               </tbody>
             </table>
           </div>
 
           <!-- Form -->
           <div class="mt-3 rounded border border-border bg-card p-3">
-            <h3 class="text-xs font-bold">Pakket toevoegen / aanpassen</h3>
-            <p class="mt-0.5 text-[11px] text-muted">
-              Vul de gegevens in en klik op opslaan. (Later koppel je dit aan je backend.)
-            </p>
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 class="text-xs font-bold">Pakket toevoegen / aanpassen</h3>
+                <p class="mt-0.5 text-[11px] text-muted">
+                  Data laadt uit <code class="font-mono">packages.json</code>. Wijzigingen worden lokaal opgeslagen (localStorage).
+                </p>
+              </div>
+              <div class="text-[11px] text-muted">
+                <span id="formMode">Modus: nieuw</span>
+              </div>
+            </div>
+
+            <div id="formError" class="mt-2 hidden rounded border border-red-200 bg-red-50 px-2 py-1 text-[11px] text-red-700"></div>
 
             <div class="mt-3 grid gap-3 md:grid-cols-2">
+              <input id="pkg_id" type="hidden" />
+
               <div class="grid gap-1.5">
                 <label class="text-xs text-text" for="pkg_name">Naam</label>
                 <input
@@ -223,6 +165,7 @@
                   id="pkg_price"
                   type="number"
                   step="0.01"
+                  min="0"
                   placeholder="Bijv. 149.00"
                   class="h-8 rounded border border-border bg-card px-2 text-xs outline-none focus:border-border-dark focus:ring-2 focus:ring-[color:var(--btn)]/20"
                 />
@@ -239,15 +182,15 @@
               </div>
 
               <label class="flex items-center gap-2 text-xs text-text">
-                <input type="checkbox" checked class="h-4 w-4 accent-[color:var(--btn)]" />
+                <input id="pkg_active" type="checkbox" class="h-4 w-4 accent-[color:var(--btn)]" />
                 Actief
               </label>
 
               <div class="flex justify-end gap-2 md:col-span-2">
-                <button type="button" class="h-8 rounded border border-black/15 bg-tab px-3 text-xs text-text hover:brightness-95">
+                <button id="btnCancel" type="button" class="h-8 rounded border border-black/15 bg-tab px-3 text-xs text-text hover:brightness-95">
                   Annuleren
                 </button>
-                <button type="button" class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover">
+                <button id="btnSave" type="button" class="h-8 rounded border border-black/15 bg-btn px-3 text-xs text-white hover:bg-btn-hover">
                   Opslaan
                 </button>
               </div>
@@ -260,5 +203,374 @@
         © Groen &amp; Gewoon Doen – Adminpaneel
       </footer>
     </main>
+
+    <script>
+      /**
+       * CRUD-model:
+       * - Seed komt uit ./packages.json
+       * - Wijzigingen gaan naar localStorage (per browser)
+       * - Je kunt later overschakelen naar backend door save/load te vervangen door fetch calls
+       */
+
+      const SOURCE_URL = "../packages.json";
+      const LS_KEY = "ggd_packages_overrides_v1";
+
+      const $ = (id) => document.getElementById(id);
+
+      const els = {
+        tbody: $("packagesTbody"),
+        lastUpdate: $("lastUpdate"),
+
+        btnNew: $("btnNew"),
+        btnRefresh: $("btnRefresh"),
+        btnReset: $("btnReset"),
+
+        formMode: $("formMode"),
+        formError: $("formError"),
+
+        id: $("pkg_id"),
+        name: $("pkg_name"),
+        price: $("pkg_price"),
+        desc: $("pkg_desc"),
+        active: $("pkg_active"),
+
+        btnCancel: $("btnCancel"),
+        btnSave: $("btnSave"),
+      };
+
+      // In-memory state
+      let seedPackages = [];      // uit packages.json
+      let overrides = null;       // uit localStorage: { updatedAt, itemsById, deletedIds }
+      let currentEditId = null;   // null = nieuw
+
+      function nowLabel() {
+        const d = new Date();
+        const pad = (n) => String(n).padStart(2, "0");
+        return `${pad(d.getDate())}-${pad(d.getMonth() + 1)}-${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      }
+
+      function euro(value) {
+        const n = Number(value);
+        if (!Number.isFinite(n)) return "€ 0,00";
+        return "€ " + n.toFixed(2).replace(".", ",");
+      }
+
+      function slugId() {
+        // eenvoudige id generator
+        const rnd = Math.random().toString(16).slice(2, 8);
+        return "pkg_" + Date.now().toString(36) + "_" + rnd;
+      }
+
+      function loadOverrides() {
+        try {
+          const raw = localStorage.getItem(LS_KEY);
+          if (!raw) return {
+            updatedAt: null,
+            itemsById: {},
+            deletedIds: {},
+          };
+          const parsed = JSON.parse(raw);
+          return {
+            updatedAt: parsed?.updatedAt || null,
+            itemsById: parsed?.itemsById && typeof parsed.itemsById === "object" ? parsed.itemsById : {},
+            deletedIds: parsed?.deletedIds && typeof parsed.deletedIds === "object" ? parsed.deletedIds : {},
+          };
+        } catch {
+          return { updatedAt: null, itemsById: {}, deletedIds: {} };
+        }
+      }
+
+      function saveOverrides() {
+        overrides.updatedAt = new Date().toISOString();
+        localStorage.setItem(LS_KEY, JSON.stringify(overrides));
+        els.lastUpdate.textContent = "Laatste update: " + nowLabel();
+      }
+
+      function clearOverrides() {
+        localStorage.removeItem(LS_KEY);
+        overrides = loadOverrides();
+        els.lastUpdate.textContent = "Laatste update: —";
+      }
+
+      function mergePackages() {
+        // seed + overrides - deletions
+        const map = new Map();
+
+        for (const p of seedPackages) map.set(p.id, { ...p });
+
+        // apply overrides
+        for (const [id, pkg] of Object.entries(overrides.itemsById)) {
+          if (!id) continue;
+          map.set(id, { ...map.get(id), ...pkg, id });
+        }
+
+        // apply deletes
+        for (const id of Object.keys(overrides.deletedIds)) {
+          map.delete(id);
+        }
+
+        return Array.from(map.values()).sort((a, b) => (a.name || "").localeCompare(b.name || "", "nl"));
+      }
+
+      function setFormMode(modeText) {
+        els.formMode.textContent = "Modus: " + modeText;
+      }
+
+      function showError(msg) {
+        if (!msg) {
+          els.formError.classList.add("hidden");
+          els.formError.textContent = "";
+          return;
+        }
+        els.formError.textContent = msg;
+        els.formError.classList.remove("hidden");
+      }
+
+      function resetForm() {
+        currentEditId = null;
+        els.id.value = "";
+        els.name.value = "";
+        els.price.value = "";
+        els.desc.value = "";
+        els.active.checked = true;
+        setFormMode("nieuw");
+        showError("");
+      }
+
+      function fillForm(pkg) {
+        currentEditId = pkg.id;
+        els.id.value = pkg.id;
+        els.name.value = pkg.name || "";
+        els.price.value = Number(pkg.price ?? 0);
+        els.desc.value = pkg.description || "";
+        els.active.checked = Boolean(pkg.active);
+        setFormMode("bewerken");
+        showError("");
+        // scroll form in view (handig)
+        els.name.scrollIntoView({ behavior: "smooth", block: "center" });
+        els.name.focus();
+      }
+
+      function validateForm() {
+        const name = (els.name.value || "").trim();
+        const price = Number(els.price.value);
+        if (!name) return "Naam is verplicht.";
+        if (!Number.isFinite(price) || price < 0) return "Prijs moet een geldig getal zijn (>= 0).";
+        return null;
+      }
+
+      function upsertFromForm() {
+        const err = validateForm();
+        if (err) return showError(err);
+
+        const id = currentEditId || slugId();
+        const pkg = {
+          id,
+          name: (els.name.value || "").trim(),
+          price: Number(els.price.value),
+          description: (els.desc.value || "").trim(),
+          active: Boolean(els.active.checked),
+        };
+
+        // mark as not deleted
+        if (overrides.deletedIds[id]) delete overrides.deletedIds[id];
+
+        // store override item
+        overrides.itemsById[id] = pkg;
+
+        saveOverrides();
+        render();
+        resetForm();
+      }
+
+      function deletePkg(id) {
+        if (!id) return;
+        if (!confirm("Weet je zeker dat je dit pakket wilt verwijderen?")) return;
+
+        overrides.deletedIds[id] = true;
+        if (overrides.itemsById[id]) delete overrides.itemsById[id];
+
+        saveOverrides();
+        render();
+        if (currentEditId === id) resetForm();
+      }
+
+      function duplicatePkg(id) {
+        const all = mergePackages();
+        const original = all.find((p) => p.id === id);
+        if (!original) return;
+
+        const newId = slugId();
+        const copy = {
+          ...original,
+          id: newId,
+          name: (original.name || "Pakket") + " (kopie)",
+        };
+
+        overrides.itemsById[newId] = copy;
+        saveOverrides();
+        render();
+        fillForm(copy);
+      }
+
+      function toggleActive(id) {
+        const all = mergePackages();
+        const pkg = all.find((p) => p.id === id);
+        if (!pkg) return;
+
+        const next = { ...pkg, active: !pkg.active };
+        overrides.itemsById[id] = next;
+        if (overrides.deletedIds[id]) delete overrides.deletedIds[id];
+
+        saveOverrides();
+        render();
+      }
+
+      function render() {
+        const list = mergePackages();
+
+        if (!list.length) {
+          els.tbody.innerHTML = `
+            <tr>
+              <td class="border border-border px-2 py-3 text-muted" colspan="5">
+                Geen pakketten gevonden. Controleer <code class="font-mono">packages.json</code> of klik op “Nieuw pakket”.
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        els.tbody.innerHTML = list
+          .map((p) => {
+            const activeLabel = p.active ? "Ja" : "Nee";
+            const activeBtn = p.active ? "Deactiveren" : "Activeren";
+
+            return `
+              <tr class="hover:bg-bg/40">
+                <td class="border border-border px-2 py-2 font-semibold">${escapeHtml(p.name || "")}</td>
+                <td class="border border-border px-2 py-2 font-semibold">${escapeHtml(euro(p.price))}</td>
+                <td class="border border-border px-2 py-2 text-muted">${escapeHtml(p.description || "")}</td>
+                <td class="border border-border px-2 py-2">
+                  <span class="rounded border border-border bg-panel px-2 py-1 text-[11px] font-semibold">${activeLabel}</span>
+                </td>
+                <td class="border border-border px-2 py-2">
+                  <div class="flex flex-wrap justify-end gap-1.5">
+                    <button data-action="edit" data-id="${p.id}" class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
+                      Bewerken
+                    </button>
+                    <button data-action="dup" data-id="${p.id}" class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
+                      Dupliceren
+                    </button>
+                    <button data-action="toggle" data-id="${p.id}" class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
+                      ${activeBtn}
+                    </button>
+                    <button data-action="del" data-id="${p.id}" class="rounded border border-black/15 bg-btn px-2.5 py-1.5 text-xs text-white hover:bg-btn-hover" type="button">
+                      Verwijderen
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          })
+          .join("");
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      async function loadSeed() {
+        // Let op: dit werkt alleen als packages.json via HTTP(s) geserveerd wordt.
+        // In file:// mode blocken browsers vaak fetch.
+        const res = await fetch(SOURCE_URL, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Kan packages.json niet laden (${res.status})`);
+        const data = await res.json();
+
+        const arr = Array.isArray(data?.packages) ? data.packages : Array.isArray(data) ? data : [];
+        seedPackages = arr
+          .map((p) => ({
+            id: String(p.id || slugId()),
+            name: String(p.name || ""),
+            price: Number(p.price ?? 0),
+            description: String(p.description || ""),
+            active: Boolean(p.active),
+          }))
+          .filter((p) => p.name);
+
+        // update pill
+        overrides = overrides || loadOverrides();
+        if (overrides.updatedAt) {
+          els.lastUpdate.textContent = "Laatste update: " + nowLabel();
+        } else {
+          els.lastUpdate.textContent = "Laatste update: —";
+        }
+      }
+
+      function wireEvents() {
+        // table actions (event delegation)
+        els.tbody.addEventListener("click", (e) => {
+          const btn = e.target.closest("button[data-action]");
+          if (!btn) return;
+          const id = btn.getAttribute("data-id");
+          const action = btn.getAttribute("data-action");
+
+          const all = mergePackages();
+          const pkg = all.find((p) => p.id === id);
+
+          if (action === "edit" && pkg) fillForm(pkg);
+          if (action === "dup") duplicatePkg(id);
+          if (action === "toggle") toggleActive(id);
+          if (action === "del") deletePkg(id);
+        });
+
+        els.btnNew.addEventListener("click", () => resetForm());
+
+        els.btnRefresh.addEventListener("click", async () => {
+          try {
+            await loadSeed();
+            render();
+          } catch (err) {
+            alert(err?.message || "Vernieuwen mislukt.");
+          }
+        });
+
+        els.btnReset.addEventListener("click", () => {
+          if (!confirm("Lokale wijzigingen verwijderen? (packages.json blijft de bron)")) return;
+          clearOverrides();
+          render();
+          resetForm();
+        });
+
+        els.btnCancel.addEventListener("click", resetForm);
+        els.btnSave.addEventListener("click", upsertFromForm);
+      }
+
+      async function init() {
+        overrides = loadOverrides();
+        wireEvents();
+
+        try {
+          await loadSeed();
+          render();
+          resetForm();
+        } catch (err) {
+          console.error(err);
+          els.tbody.innerHTML = `
+            <tr>
+              <td class="border border-border px-2 py-3 text-red-700 bg-red-50" colspan="5">
+                Kon <code class="font-mono">packages.json</code> niet laden. Zet het bestand in dezelfde map als deze pagina (en open via je domein, niet via file://).
+              </td>
+            </tr>
+          `;
+        }
+      }
+
+      init();
+    </script>
   </body>
 </html>
