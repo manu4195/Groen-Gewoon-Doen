@@ -1,0 +1,26 @@
+{
+    "standaardPakket":[
+    {
+      "Naam": "pkg_tegel_leggen",
+      "prijs": 18.50,
+      "omschrijving": "Prijs per m², inclusief afvoer (min. 10m²).",
+      "actief": true,
+      "acties": ""
+    },
+        {
+      "Naam": "pkg_tegel_verwijderen",
+      "prijs": 18.50,
+      "omschrijving": "Prijs per m², inclusief afvoer (min. 10m²).",
+      "actief": true,
+      "acties": ""
+    }
+],
+
+
+    "premiumPakket": [{}
+    ],
+
+
+    "actief" : ["true", "false"],
+    "acties" : ["true", "false"]
+    }
